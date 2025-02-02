@@ -1,8 +1,17 @@
 self.addEventListener("fetch", (event) => {
-    if( event.request.url.includes('.avif')){
-        // let fotoRequest = fetch('/server-worker/img/tec.avif');
-        // let fotoRequest = fetch(event.request.url);
-        let fotoRequest = fetch(event.request);
-        event.respondWith(fotoRequest);
+    
+    if( event.request.url.includes("style.css") ){
+        let respuesta = new Response(`
+            body {
+                background-color: red !important;
+                color: white;
+            }
+        `, {
+            headers: {
+                "Content-Type": "text/css"
+            }
+        });
+
+        event.respondWith( respuesta );
     }
 });
