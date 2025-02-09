@@ -1,7 +1,10 @@
 self.addEventListener("fetch", (event) => {
     
-    if( event.request.url.includes("tec.avif") ){
-        let resp = fetch("img/gon.png");
-        event.respondWith( resp );
-    }
+    const resp = fetch(event.request)
+        .then( resp => {
+            return resp.ok ? resp : fetch("img/tec.avif");
+        });
+
+        event.respondWith(resp);
+    
 });

@@ -1,6 +1,3 @@
-// if('serviceWorker' in navigator) {
-//     console.log('Service Worker is supported');
-// }
 
 // Confirmar si podemos usar el service worker
 if (navigator.serviceWorker){
