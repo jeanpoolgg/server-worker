@@ -21,3 +21,13 @@ self.addEventListener('activate', event => {
     // Borrar cache viejo
     console.log('SW: Activo y listo para controlar la app');
 });
+
+self.addEventListener('fetch', event => {
+    // Aplicar estrategias del cache
+    console.log('SW: ', event.request.url);
+
+    if (event.request.url.includes('https://reqres.in/')){
+        const resp = new Response(`{ok: false, mensaje: 'jajaja'}`);
+        event.respondWith(resp);
+    }
+});
