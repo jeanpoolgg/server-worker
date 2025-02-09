@@ -3,10 +3,9 @@
 if (navigator.serviceWorker){
     navigator.serviceWorker.register('/service-worker/sw.js')
         .then(reg => { 
-            setTimeout(() => {
-                reg.sync.register('posteo-gatitos');
-                console.log('Se enviaron fotos de gatitos al server');
-            }, 3000);
+            Notification.requestPermission().then(result => {   
+                reg.showNotification('Hola Mundo');
+            });
         })
 }
 
